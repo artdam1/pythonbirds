@@ -11,6 +11,14 @@ class Pessoa:
     def cumprimentar(self):
         return f'olá {id(self)}'
 
+    @staticmethod
+    def metodo_estatico():    # independe do objeto.
+        return 42
+
+    @classmethod
+    def nome_e_atributos_de_classe(cls):   # é utilizado quando se quer acessar dados da propria classe.
+        return f'{cls} - olhos {cls.olhos}'
+
 
 if __name__ == '__main__':
     renzo = Pessoa(nome='renzo')
@@ -27,13 +35,15 @@ if __name__ == '__main__':
     del luciano.filhos
     luciano.olhos = 1
     del luciano.olhos
-    print(luciano.__dict__)          # o __dict__ mostra os atributos de instancias presente nos atributos dinamicos
+    print(luciano.__dict__)          # o __dict__ mostra os atributos de instância presente nos atributos dinamicos
     print(renzo.__dict__)
     Pessoa.olhos = 3
     print(Pessoa.olhos)
     print(luciano.olhos)
     print(renzo.olhos)
     print(id(Pessoa.olhos), id(luciano.olhos), id(renzo.olhos))
+    print(Pessoa.metodo_estatico(), luciano.metodo_estatico())
+    print(Pessoa.nome_e_atributos_de_classe(), luciano.nome_e_atributos_de_classe())
 
 
 
